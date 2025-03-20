@@ -2,14 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Montserrat({
-  style: ["normal"],
-  subsets: ["latin"],
-});
-
-const geistMono = Montserrat({
-  weight: ["400"],
-  style: ["italic"],
+const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
@@ -25,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistMono.className} ${geistSans.className}`}>
+      <body className={`${montserrat.className}`}>
         {children}
       </body>
     </html>
