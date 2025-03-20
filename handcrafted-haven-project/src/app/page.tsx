@@ -9,8 +9,8 @@ export default function Home() {
           className={styles.logo}
           src="/handcraftedHaven.svg"
           alt="Next.js logo"
-          width={180}
-          height={38}
+          width={250}
+          height={80}
           priority
         />
         <ol>
