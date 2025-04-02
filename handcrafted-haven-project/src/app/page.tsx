@@ -9,7 +9,7 @@ export default function Home() {
         <Image
           className={styles.logo}
           src="/handcraftedHaven.svg"
-          alt="Next.js logo"
+          alt="Handcrafted Haven logo"
           width={250}
           height={80}
           priority

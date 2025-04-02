@@ -1,10 +1,10 @@
 .page {
   --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  --gray-alpha-200: #006A86;
+  --gray-alpha-100: #bb833a5a;
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
+  --button-primary-hover: #BB843A;
+  --button-secondary-hover: #006A86;
 
   display: grid;
   grid-template-rows: 20px 1fr 20px;
@@ -13,7 +13,7 @@
   min-height: 100svh;
   padding: 80px;
   gap: 64px;
-  font-family: var(--font-geist-sans);
+  font-family: var(--montserrat-regular-400);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -35,7 +35,8 @@
 }
 
 .main ol {
-  font-family: var(--font-geist-mono);
+  font-family: var(--montserrat-regular-400);
+  font-style: italic;
   padding-left: 0;
   margin: 0;
   font-size: 14px;
@@ -82,13 +83,15 @@
 }
 
 a.primary {
-  background: var(--foreground);
+  background: #006A86;
   color: var(--background);
   gap: 8px;
 }
 
 a.secondary {
   border-color: var(--gray-alpha-200);
+  color: #006a86;
+  font-weight: 700;
   min-width: 158px;
 }
 
@@ -118,6 +121,7 @@ a.secondary {
   a.secondary:hover {
     background: var(--button-secondary-hover);
     border-color: transparent;
+    color: white;
   }
 
   .footer a:hover {
