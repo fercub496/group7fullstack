@@ -1,12 +1,20 @@
+import BarTop from '@/app/ui/dashboard/bartop';
 import SideNav from '@/app/ui/dashboard/sidenav';
+import Link from 'next/link';
  
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-      <div className="w-full flex-none md:w-64">
-        <SideNav />
+    <div className="dash-layout">
+      <SideNav />
+      <div className="body-layout">
+        <div className="top-header">
+          <Link href="/" className="sign-link">SIGN IN</Link>
+        </div>
+        <div className="bar-layout">
+          <BarTop />
+        </div>
+        {children}
       </div>
-      <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
     </div>
   );
 }
