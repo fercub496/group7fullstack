@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ProductsSkeleton } from '@/app/ui/skeletons';
 
 type Product = {
   id: string;
@@ -34,25 +35,23 @@ export default function DashboardPage() {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-
       {/* Etsy-style Filter Buttons */}
-      <div className="bar-top" style={{ marginBottom: "20px" }}>
-        <button onClick={() => setSelectedCategory(null)}>All</button>
-        <button onClick={() => setSelectedCategory("Wood")}>Wood</button>
-        <button onClick={() => setSelectedCategory("Ceramic")}>Ceramic</button>
-        <button onClick={() => setSelectedCategory("Jewelry")}>Jewelry</button>
-        <button onClick={() => setSelectedCategory("Textiles")}>Textiles</button>
+      <div className="bar-top">
+        <button className="bar-top-text" onClick={() => setSelectedCategory(null)}>ALL</button>
+        <button className="bar-top-text" onClick={() => setSelectedCategory("Wood")}>WOOD</button>
+        <button className="bar-top-text" onClick={() => setSelectedCategory("Ceramic")}>CERAMIC</button>
+        <button className="bar-top-text" onClick={() => setSelectedCategory("Jewelry")}>JEWERLY</button>
+        <button className="bar-top-text" onClick={() => setSelectedCategory("Textiles")}>TEXTILES</button>
       </div>
 
       {/* Products Grid */}
       {loading ? (
-        <p>Loading products...</p>
+        < ProductsSkeleton />
       ) : (
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
-          {products.map((product) => (
-            <div key={product.id} style={{ border: "1px solid #ddd", padding: "10px" }}>
-              <img src={product.image} alt={product.name} width={150} />
+        <div className="productGrid">
+         {products.map((product) => (
+            <div key={product.id} className="productCard">
+              <img src={product.image} alt={product.name}/>
               <h3>{product.name}</h3>
               <p>Category: {product.category}</p>
               <p>Price: ${product.price}</p>

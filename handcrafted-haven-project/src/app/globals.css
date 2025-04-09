@@ -1,3 +1,4 @@
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -11,17 +12,13 @@
 }
 
 html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
 }
 
 * {
@@ -35,9 +32,24 @@ a {
   text-decoration: none;
 }
 
+
+.body-layout {
+  display: block;
+}
+ 
 .dash-layout {
   display: grid;
   grid-template-columns: 250px auto;
+  grid-template-rows: 260px;
+}
+
+.children {
+  grid-column: 1/3;
+  width: 100vw;
+}
+
+button {
+  font-family:Montserrat;
 }
 
 /* testing css for the sellers page */
@@ -45,11 +57,10 @@ a {
 .side-nav {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 280px;
   background-color: #bb833a31; /* Dark background for sidebar */
   padding: 0px;
   width: 250px; /* Adjust width as needed */
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sidebar shadow */
 }
 
 .side-nav-logo {
@@ -62,7 +73,7 @@ a {
 }
 
 .top-header {
-  height: 94px;
+  height: 94.5px;
   width: 100%;
   display: flex;
 }
@@ -78,12 +89,47 @@ a {
 }
 
 .bar-top {
-  display: inline-flex;
+  display: flex;
   height: 40px;
   width: 100%;
   background-color: #006A86;
   align-items: center;
-  padding-left: 10px
+  padding-left: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  color: White;
+  
+}
+
+.bar-top-null {
+  height: 40px;
+  width: 100%;
+  background-color: #006A86;
+   
+}
+
+.bar-center {
+  width: 100%;
+  background-color: #bb833a31;
+  height: 126px;
+  margin: 0;
+  padding: 0;
+
+}
+
+
+.bar-top-text {
+  font-size: 16px;
+  font-weight: 400;
+  color: White;
+  background: none;
+  border: none;
+  padding: 5px;
+}
+
+
+.bar-top-text:hover {
+  color: #bb833a;
 
 }
 
@@ -110,8 +156,100 @@ a {
   font-weight: 600;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+.productGrid {
+  padding: 25px;
+  gap: 5px;
 }
+
+.productCard {
+  display: flex;
+  width: 300px;
+  height: 250px;
+  background-color: #006A86;
+  font-size: 18px;
+  color: white;
+  font-family: montserrat;
+  gap: 5px;
+}
+
+.productCard img {
+  width: 150px;
+  height: 200px;
+}
+
+@media screen and (min-width: 700px) {
+  .dash-layout {
+    display: grid;
+    grid-template-columns: 250px auto;
+    grid-template-rows: 94px auto;
+  }
+
+  .side-nav {
+    grid-row: 1 / 3 ;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #bb833a31; /* Dark background for sidebar */
+    padding: 0px;
+    width: 250px; /* Adjust width as needed */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Sidebar shadow */
+  }
+
+  .top-header {
+    height: 94px;
+  }
+
+  .body-layout {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+
+  .bar-center {
+    display: none;
+  }
+
+  .bar-top-null {
+    display: none;
+  }
+
+  .bar-top {
+    width: 100%;
+  }
+  .bar-top-text {
+    font-size: 18px;
+    font-weight: 400;
+    color: White;
+    background: none;
+    border: none;
+    padding: 10px;
+  }
+
+  .children {
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+
+  
+.productGrid {
+  display: flex;
+  padding: 25px;
+  gap: 5px;
+}
+
+.productCard {
+  display: block;
+  width: 150px;
+  background-color: #006A86;
+  font-size: 14px;
+  color: white;
+  font-family: montserrat;
+  gap: 5px;
+}
+
+.productCard img {
+  width: 150px;
+  height: 200px;
+}
+
+}
+

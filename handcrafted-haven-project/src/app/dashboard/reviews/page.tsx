@@ -1,3 +1,3 @@
 export default function Page() {
-    return <p>Reviews and Ratings Page</p>;
+    return <div className="bar-top">REVIEWS & RATINGS</div>;
   }
