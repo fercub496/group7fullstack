@@ -1,3 +1,3 @@
 export default function Page() {
-    return <p>Sellers Page</p>;
+  return <div className="bar-top">SELLERS</div>;
   }
