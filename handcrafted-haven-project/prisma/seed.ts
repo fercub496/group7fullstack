@@ -1,15 +1,16 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
 async function main() {
+
   await prisma.product.createMany({
     data: [
       {
         name: "Handmade Wooden Bowl",
         category: "Wood",
         price: 29.99,
-        image: "https://example.com/wooden-bowl.jpg",
+        image: "/products/handmade-wooden-bowl.jpg",
       },
       {
         name: "Ceramic Vase",
