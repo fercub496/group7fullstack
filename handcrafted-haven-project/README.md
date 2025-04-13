@@ -34,3 +34,13 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Dimensions of products
+
+Images 1920 x 1280 pix
+
+FOR SQL Database of Neon:
+UPDATE "Product" SET image='/products/ceramic-vase.webp' WHERE id='c1b378f8-43e6-4cd1-b0e3-6c4e0ec33310';
+UPDATE "Product" SET image='/products/silver-handmade-ring.webp' WHERE id='08627e99-d7b0-4ebf-bf16-30f3baea6a14';
+UPDATE "Product" SET image='/products/woven-wool-blanket.webp' WHERE id='489a2d0a-413f-472f-bf2a-94058b06a1c7';
+UPDATE "Product" SET image='/products/handcrafted-wooden-spoon-set.webp' WHERE id='0f42d9c5-dbd6-44d6-9783-fbf602b975d4';
