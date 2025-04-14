@@ -1,11 +1,16 @@
 export function ProductsSkeleton() {
     return (
-        <div className="productGrid">
-            < ProductSkeleton />
-            < ProductSkeleton />
-            < ProductSkeleton />
-            < ProductSkeleton />
-            < ProductSkeleton />
+        <div>
+            <div className="bar-top">
+
+            </div>
+            <div className="productGrid">
+                < ProductSkeleton />
+                < ProductSkeleton />
+                < ProductSkeleton />
+                < ProductSkeleton />
+                < ProductSkeleton />
+            </div>
         </div>
     )
 };

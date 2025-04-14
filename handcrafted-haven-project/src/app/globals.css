@@ -176,6 +176,7 @@ button {
   flex-flow: row wrap;
   padding: 25px;
   gap: 5px;
+  justify-content: center;
 }
 
 .productCard {
@@ -195,6 +196,27 @@ button {
   width: 100%;
   height: auto;
   margin-bottom: 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.arrow {
+  width: 25px;
+  height: auto;
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+}
+
+.pagesNum {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 @media screen and (min-width: 700px) {
