@@ -99,6 +99,26 @@ button {
   display: flex;
 }
 
+.reviewsForm {
+  display: flex;
+  flex-direction: column;
+  border: 1px white solid;
+  max-width: 23rem;
+  margin-top: 1.5rem;
+  padding: 50px;
+  height: auto;
+  min-height: 500px;
+}
+
+.reviewsForm label {
+  padding: 30px;
+}
+
+.ratingForm {
+  display: flex;
+  gap: 1;
+}
+
 .bar-top-null {
   height: 40px;
   width: 100%;

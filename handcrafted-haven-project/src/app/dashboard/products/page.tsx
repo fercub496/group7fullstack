@@ -9,6 +9,7 @@ type Product = {
   category: string;
   price: number;
   image: string;
+  seller: string;
 };
 
 export default function DashboardPage() {
@@ -55,6 +56,7 @@ export default function DashboardPage() {
               <h3>{product.name}</h3>
               <p>Category: {product.category}</p>
               <p>Price: ${product.price}</p>
+              <p>Seller: {product.seller}</p>
             </div>
           ))}
         </div>
