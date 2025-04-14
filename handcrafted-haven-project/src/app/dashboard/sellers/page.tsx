@@ -32,7 +32,7 @@ export default function SellersPage() {
 
   return (
     <div>
-      <h1>Sellers</h1>
+      <div className="bar-top">SELLERS</div>
       <div className="productGrid">
         {sellers.map((seller) => (
           <div
