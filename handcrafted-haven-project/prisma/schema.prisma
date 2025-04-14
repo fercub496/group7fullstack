@@ -21,8 +21,10 @@ model Product {
   price       Float
   image       String
   createdAt   DateTime @default(now())
-  seller      String?
-  sellerimage String?
+  seller      String
+  sellerimage String
+  sellerId  String?
+  sellerRef   Seller?  @relation("SellerProducts", fields: [sellerId], references: [id])
   reviews     Review[]
 }
 
@@ -33,4 +35,11 @@ model Review {
   createdAt DateTime @default(now())
   product   Product  @relation(fields: [productId], references: [id])
   productId String
+}
+
+model Seller {
+  id          String    @id @default(uuid())
+  name        String    @unique
+  sellerimage String
+  products    Product[] @relation("SellerProducts")
 }
