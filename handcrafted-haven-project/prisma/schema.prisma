@@ -23,7 +23,7 @@ model Product {
   createdAt   DateTime @default(now())
   seller      String
   sellerimage String
-  sellerId  String?
+  sellerId    String?
   sellerRef   Seller?  @relation("SellerProducts", fields: [sellerId], references: [id])
   reviews     Review[]
 }
