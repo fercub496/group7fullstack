@@ -7,6 +7,7 @@ export default function ReviewsPage() {
   const [comment, setComment] = useState('');
   const [productId, setProductId] = useState('');
   const [message, setMessage] = useState('');
+  const [submittedComment, setSubmittedComment] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,9 +25,15 @@ export default function ReviewsPage() {
 
       if (response.ok) {
         setMessage('Review submitted!');
+        setSubmittedComment(comment);
         setRating(0);
         setComment('');
         setProductId('');
+
+        setTimeout(() => {
+          setMessage('');
+          setSubmittedComment('');
+        }, 5000);
       } else {
         console.error('Server Error:', data);
         setMessage(data?.message || 'Something went wrong.');
@@ -86,7 +93,14 @@ export default function ReviewsPage() {
           Submit Review
         </button>
 
-        {message && <p>{message}</p>}
+        {message && <p className="bounce-once">{message}</p>}
+
+        {submittedComment && (
+          <div className="bounce-once">
+            <strong>Your Comment:</strong>
+            <p>{submittedComment}</p>
+          </div>
+        )}
       </form>
     </>
   );
