@@ -15,18 +15,18 @@ export async function POST(req: Request) {
       return NextResponse.json({ message: 'Missing fields' }, { status: 400 });
     }
      
-    const review = await prisma.review.create({
-        data: {
+     const review = await prisma.review.create({
+         data: {
           rating: Number(rating),
-          comment,
+         comment,
           product: {
-            connect: { id: productId }}
+           connect: { id: productId }}
         },
-      });
+     });
 
     
     
-    return NextResponse.json({ message: 'Review saved!', review }, { status: 200 });
+    return NextResponse.json({ message: 'Review saved!', review}, { status: 200 });
   } catch (error) {
     console.error('API error:', error);
     return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
