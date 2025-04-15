@@ -1,4 +1,4 @@
-import { Product } from "./definitions";
+
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();

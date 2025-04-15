@@ -1,5 +1,4 @@
 import { fetchFilteredProducts } from '@/app/lib/data';
-import { Product } from '@prisma/client';
 
 export default async function ProductsGrid({
     query,
