@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from "@prisma/client";
 
+const prisma = new PrismaClient();
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -12,16 +14,19 @@ export async function POST(req: Request) {
     if (!rating || !comment || !productId) {
       return NextResponse.json({ message: 'Missing fields' }, { status: 400 });
     }
-
+     
     const review = await prisma.review.create({
         data: {
-          rating,
+          rating: Number(rating),
           comment,
-          productId,
+          product: {
+            connect: { id: productId }}
         },
       });
-    // Simulate success response (replace with DB logic later)
-    return NextResponse.json({ message: 'Review saved!' }, { status: 200 });
+
+    
+    
+    return NextResponse.json({ message: 'Review saved!', review }, { status: 200 });
   } catch (error) {
     console.error('API error:', error);
     return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
