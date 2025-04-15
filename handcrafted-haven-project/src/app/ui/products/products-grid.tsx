@@ -1,5 +1,4 @@
 import { fetchFilteredProducts } from '@/app/lib/data';
-import { Product } from '@/app/lib/definitions';
 
 export default async function ProductsGrid({
     query,

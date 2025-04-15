@@ -16,7 +16,7 @@ export function ProductsSkeleton() {
 export function ProductSkeleton() {
     return (
         <div className="productCard">
-            <img/>
+            <img alt="product" src="/imgSK.svg"/>
             <h3></h3>
             <p>Category:</p>
             <p>Price: $</p>
@@ -42,8 +42,20 @@ export function SellersSkeleton() {
 export function SellerSkeleton() {
     return (
         <div className="productCard">
-              <img/>
+              <img alt="seller" src="/imgPSK.svg"/>
               <h2>Name</h2>
         </div>
     )
 };
+
+export function SellerImgSkeleton() {
+    return (       
+        <img alt="seller" src="/imgPSK.svg"/>
+    )
+};
+
+export function BarTopSkeleton() {
+    return (
+        <div className="bar-top"></div>
+    )
+}

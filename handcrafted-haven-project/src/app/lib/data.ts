@@ -1,8 +1,8 @@
 
 import { PrismaClient } from "@prisma/client";
+import { Seller, Product, NumElem } from '@/app/lib/definitions';
 
 const prisma = new PrismaClient();
-
 
 const ITEMS_PER_PAGE = 6;
 export async function fetchFilteredProducts(
@@ -11,7 +11,7 @@ export async function fetchFilteredProducts(
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
-    const products = await prisma.$queryRawUnsafe(`
+    const products = await prisma.$queryRawUnsafe<Product[]>(`
             SELECT *
             FROM "Product"
             ${query ? `WHERE category = '${query}'` : ""}
@@ -29,12 +29,15 @@ export async function fetchFilteredProducts(
 
 export async function fetchProductsPages(query: string) {
   try {
-    const products = await prisma.$queryRawUnsafe(`
+    const products = await prisma.$queryRawUnsafe<Array<NumElem>>(`
             SELECT count(*)
             FROM "Product"
             ${query ? `WHERE category = '${query}'` : ""}   
         `)
-    const totalPages = Math.ceil(Number(products[0].count) / ITEMS_PER_PAGE);
+
+    const product = products[0].count;
+    const prodNum = product.toString().replace("n", "");    
+    const totalPages = Math.ceil(Number(prodNum) / ITEMS_PER_PAGE);
     return totalPages;
 
   } catch (error) {
@@ -49,7 +52,7 @@ export async function fetchFilteredSellers(
 ) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
   try {
-    const products = await prisma.$queryRawUnsafe(`
+    const products = await prisma.$queryRawUnsafe<Seller[]>(`
             SELECT *
             FROM "Seller"
             ${query ? `WHERE name ILIKE '%${query}%'` : ""} 
@@ -67,11 +70,16 @@ export async function fetchFilteredSellers(
 
 export async function fetchSellersPages(query: string) {
   try {
-    const sellers = await prisma.$queryRawUnsafe(`
+    const sellers = await prisma.$queryRawUnsafe<Array<NumElem>>(`
             SELECT count(*)
-            FROM "Seller"   
+            FROM "Seller"
+            ${query ? `WHERE name ILIKE '%${query}%'` : ""}   
         `)
-    const totalPages = Math.ceil(Number(sellers[0].count) / ITEMS_PER_PAGE);
+
+    const seller = sellers[0].count;
+    const sellNum = seller.toString().replace("n", "");
+   
+    const totalPages = Math.ceil(Number(sellNum) / ITEMS_PER_PAGE);
     return totalPages;
 
   } catch (error) {

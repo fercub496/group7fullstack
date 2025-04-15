@@ -6,3 +6,13 @@ export type Product = {
   image: string;
   seller: string;
 };
+
+export type Seller = {
+  id:string;
+  name: string;
+  sellerimage: string;
+};
+
+export type NumElem = {
+  count: string;
+}

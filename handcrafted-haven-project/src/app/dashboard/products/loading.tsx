@@ -1,5 +1,8 @@
-import { ProductsSkeleton } from '@/app/ui/skeletons';
+import { BarTopSkeleton, ProductsSkeleton } from '@/app/ui/skeletons';
 
 export default function Loading() {
-    return < ProductsSkeleton />;
+    return <>
+            < BarTopSkeleton />
+            < ProductsSkeleton />
+          </>
   }

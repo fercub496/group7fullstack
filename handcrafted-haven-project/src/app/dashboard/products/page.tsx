@@ -1,5 +1,5 @@
 import Search from '@/app/ui/search';
-import { ProductsSkeleton} from '@/app/ui/skeletons';
+import { ProductsSkeleton, BarTopSkeleton} from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 import ProductsGrid from '@/app/ui/products/products-grid';
 import { fetchProductsPages } from '@/app/lib/data';
@@ -20,7 +20,7 @@ export default async function Page(props: {
   return (
     <div>
       {/* Etsy-style Filter Buttons */}
-      <Suspense fallback={<ProductsSkeleton />}>
+      <Suspense fallback={<BarTopSkeleton />}>
         <Search/>
       </Suspense>
       <Suspense key={query + currentPage} fallback={<ProductsSkeleton />}>
