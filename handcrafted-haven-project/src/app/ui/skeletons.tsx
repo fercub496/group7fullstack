@@ -23,3 +23,27 @@ export function ProductSkeleton() {
         </div>
     )
 };
+
+export function SellersSkeleton() {
+    return (
+        <div>
+            <div className="productGrid">
+                < SellerSkeleton />
+                < SellerSkeleton />
+                < SellerSkeleton />
+                < SellerSkeleton />
+                < SellerSkeleton />
+                < SellerSkeleton />
+            </div>
+        </div>
+    )
+};
+
+export function SellerSkeleton() {
+    return (
+        <div className="productCard">
+              <img/>
+              <h2>Name</h2>
+        </div>
+    )
+};

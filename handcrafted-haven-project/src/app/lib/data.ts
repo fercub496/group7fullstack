@@ -42,3 +42,40 @@ export async function fetchProductsPages(query: string) {
     throw new Error('Failed to fetch total number of products.');
   }
 }
+
+export async function fetchFilteredSellers(
+  query: string,
+  currentPage: number,
+) {
+  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
+  try {
+    const products = await prisma.$queryRawUnsafe(`
+            SELECT *
+            FROM "Seller"
+            ${query ? `WHERE name ILIKE '%${query}%'` : ""} 
+            LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset} 
+        `)
+    
+
+    return products;
+
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch products.');
+  }
+}
+
+export async function fetchSellersPages(query: string) {
+  try {
+    const sellers = await prisma.$queryRawUnsafe(`
+            SELECT count(*)
+            FROM "Seller"   
+        `)
+    const totalPages = Math.ceil(Number(sellers[0].count) / ITEMS_PER_PAGE);
+    return totalPages;
+
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch total number of sellers.');
+  }
+}

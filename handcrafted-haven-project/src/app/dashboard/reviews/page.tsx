@@ -42,20 +42,22 @@ export default function ReviewsPage() {
       <div className="bar-top">REVIEWS & RATINGS</div>
 
       <form onSubmit={handleSubmit} className="reviewsForm">
-        <label>
+        <label >
           Select Product:
-          <input
+        </label>
+        <input
             type="text"
             value={productId}
             onChange={(e) => setProductId(e.target.value)}
             placeholder="Enter product ID"
             required
+            className="searchboxRev"
           />
-        </label>
 
         <label>
           Rating:
-          <div className="ratingForm">
+        </label>
+        <div className="ratingForm">
             {[1, 2, 3, 4, 5].map((star) => (
               <span
                 key={star}
@@ -67,22 +69,21 @@ export default function ReviewsPage() {
                 ★
               </span>
             ))}
-          </div>
-        </label>
+        </div>
 
         <label>
           Comment:
-          <textarea
+        </label>
+        <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder="Write your review"
             required
             rows={4}
-            className="w-full p-2 border rounded"
-          />
-        </label>
+            className="comment"
+        />
 
-        <button type="submit" className="bg-black text-white py-2 rounded">
+        <button type="submit" className="reviewButton">
           Submit Review
         </button>
 
