@@ -1,66 +1,34 @@
-"use client";
+import Search from '@/app/ui/search';
+import { ProductsSkeleton} from '@/app/ui/skeletons';
+import { Suspense } from 'react';
+import ProductsGrid from '@/app/ui/products/products-grid';
+import { fetchProductsPages } from '@/app/lib/data';
+import Pagination from '@/app/ui/products/pagination';
 
-import { useEffect, useState } from "react";
-import { ProductsSkeleton } from '@/app/ui/skeletons';
 
-type Product = {
-  id: string;
-  name: string;
-  category: string;
-  price: number;
-  image: string;
-  seller: string;
-};
-
-export default function DashboardPage() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const query = selectedCategory ? `?category=${selectedCategory}` : "";
-        const response = await fetch(`/api/products${query}`);
-        const data = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchProducts();
-  }, [selectedCategory]);
+export default async function Page(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+  const totalPages = await fetchProductsPages(query);
 
   return (
     <div>
       {/* Etsy-style Filter Buttons */}
-      <div className="bar-top">
-        <button className="bar-top-text" onClick={() => setSelectedCategory(null)}>ALL</button>
-        <button className="bar-top-text" onClick={() => setSelectedCategory("Wood")}>WOOD</button>
-        <button className="bar-top-text" onClick={() => setSelectedCategory("Ceramic")}>CERAMIC</button>
-        <button className="bar-top-text" onClick={() => setSelectedCategory("Jewelry")}>JEWERLY</button>
-        <button className="bar-top-text" onClick={() => setSelectedCategory("Textiles")}>TEXTILES</button>
+      <Suspense fallback={<ProductsSkeleton />}>
+        <Search/>
+      </Suspense>
+      <Suspense key={query + currentPage} fallback={<ProductsSkeleton />}>
+        <ProductsGrid query={query} currentPage={currentPage} />
+      </Suspense>
+      <div className="pagination">
+        {<Pagination totalPages={totalPages} />}
       </div>
-
-      {/* Products Grid */}
-      {loading ? (
-        < ProductsSkeleton />
-      ) : (
-        <div className="productGrid">
-         {products.map((product) => (
-            <div key={product.id} className="productCard">
-              <img src={product.image} alt={product.name}/>
-              <h3>{product.name}</h3>
-              <p>Category: {product.category}</p>
-              <p>Price: ${product.price}</p>
-              <p>Seller: {product.seller}</p>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 }
