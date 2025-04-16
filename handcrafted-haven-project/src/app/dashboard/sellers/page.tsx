@@ -1,51 +1,29 @@
-"use client";
+import SellersGrid from "@/app/ui/sellers/sellers-grid";
+import { SellersSkeleton} from '@/app/ui/skeletons';
+import { Suspense } from 'react';
+import { fetchSellersPages } from '@/app/lib/data';
+import Pagination from '@/app/ui/products/pagination';
+import Search from "@/app/ui/seller-search";
 
-import { useEffect, useState } from "react";
-
-type Seller = {
-  id: string;
-  name: string;
-  sellerimage: string;
-};
-
-export default function SellersPage() {
-  const [sellers, setSellers] = useState<Seller[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchSellers() {
-      try {
-        const response = await fetch("/api/sellers");
-        const data = await response.json();
-        setSellers(data);
-      } catch (error) {
-        console.error("Failed to fetch sellers:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchSellers();
-  }, []);
-
-  if (loading) return <p className="p-4">Loading sellers...</p>;
+export default async function Page(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+  const totalPages = await fetchSellersPages(query);
 
   return (
     <div>
-      <div className="bar-top">SELLERS</div>
-      <div className="productGrid">
-        {sellers.map((seller) => (
-          <div
-            key={seller.id}
-            className="productCard"
-          >
-            <img
-              src={seller.sellerimage}
-              alt={seller.name}
-            />
-            <h2>{seller.name}</h2>
-          </div>
-        ))}
+      <Search placeholder="Search sellers..."/>
+      <Suspense key={query + currentPage} fallback={<SellersSkeleton />}>
+        <SellersGrid query={query} currentPage={currentPage} />
+      </Suspense>
+      <div className="pagination">
+        {<Pagination totalPages={totalPages} />}
       </div>
     </div>
   );

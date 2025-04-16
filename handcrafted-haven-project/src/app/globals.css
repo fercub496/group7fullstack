@@ -228,6 +228,69 @@ button {
   gap: 10px;
 }
 
+.searchbox {
+  width: 200px;
+  height: 28px;
+  padding-left: 5px;
+  margin-left: 30px;
+  font-family: montserrat;
+  font-size: 15px;
+  outline: none;
+  border: 0;
+}
+
+.searchboxRev {
+  width: 250px;
+  height: 28px;
+  padding-left: 5px;
+  font-family: montserrat;
+  font-size: 15px;
+  outline: none;
+  border: 0;
+}
+
+.reviewsForm {
+  display: flex;
+  background-color: #bb833a7c;
+  color:#006A86;
+  font-weight: 600;
+  justify-self: center;
+  padding: 0;
+  padding-bottom: 10px;
+  align-items: center;
+  width: 350px;
+  height: auto;
+}
+
+.reviewsForm label {
+  padding-bottom: 10px;
+}
+
+.reviewsForm textarea {
+  font-family: montserrat;
+}
+
+
+.reviewButton {
+  height: 40px;
+  width: 200px;
+  background-color: #006A86;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 400;
+  color: White;
+  border: 0;
+  margin-top: 10px;
+}
+
+.comment {
+  border: 0;
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  height: 150px;
+}
+
 @media screen and (min-width: 700px) {
   .dash-layout {
     grid-template-rows: 94px auto;
