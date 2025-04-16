@@ -119,6 +119,15 @@ button {
   gap: 1;
 }
 
+.ratingForm span {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.ratingForm span:hover {
+  transform: scale(1.2);
+  color: #facc15;
+}
+
 .bar-top-null {
   height: 40px;
   width: 100%;
