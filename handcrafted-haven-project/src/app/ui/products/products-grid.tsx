@@ -14,7 +14,7 @@ export default async function ProductsGrid({
         <div className="productGrid">
          {products.map((product) => (
             <div key={product.id} className="productCard">
-              <img src={product.image} alt={product.name}/>
+              {product.image && <img src={product.image} alt={product.name}/>}
               <h3>{product.name}</h3>
               <p>Category: {product.category}</p>
               <p>Price: ${product.price}</p>
