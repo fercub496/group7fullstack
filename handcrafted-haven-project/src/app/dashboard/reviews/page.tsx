@@ -11,35 +11,27 @@ export default function ReviewsPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch('/api/reviews', {
-        method: 'POST',
-        body: JSON.stringify({ rating, comment, productId }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+    const response = await fetch('/api/reviews', {
+      method: 'POST',
+      body: JSON.stringify({ rating, comment, productId }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setMessage('Review submitted!');
-        setRating(0);
-        setComment('');
-        setProductId('');
-      } else {
-        console.error('Server Error:', data);
-        setMessage(data?.message || 'Something went wrong.');
-      }
-    } catch (error) {
-      console.error('Network Error:', error);
-      setMessage('Something went wrong. Please try again later.');
+    if (response.ok) {
+      setMessage('Review submitted!');
+      setRating(0);
+      setComment('');
+      setProductId('');
+    } else {
+      setMessage('Something went wrong.');
     }
   };
 
   return (
     <>
-      <div className="bar-top">REVIEWS & RATINGS</div>
+    <div className="bar-top">REVIEWS & RATINGS</div>
 
       <form onSubmit={handleSubmit} className="reviewsForm">
         <label >
