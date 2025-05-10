@@ -102,4 +102,5 @@ function PaginationArrow({
       {icon}
     </Link>
   );
+
 }
